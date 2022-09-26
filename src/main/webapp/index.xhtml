@@ -6,14 +6,45 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<f:view>
+
+<h:body>
     <p:importEnum type="dev.innovation.marathon.models.enums.Turno"
                   var="Turno" allSuffix="ALL_ENUM_VALUES" />
 
     <h:outputLabel value="Hello world!"/><br/>
-    <h:outputText value="#{estudanteCadastrarBean.estudante.nome eq estudanteCadastrarBean.estudante.nome}"/><br/>
-    <h:outputText value="#{estudanteCadastrarBean.estudante.idade}"/><br/>
-    <h:outputText value="#{estudanteCadastrarBean.estudante.turno eq Turno.NOTURNO}"/><br/>
-</f:view>
+    <h:outputLabel value="==============================================================================="/><br/>
+    <h:outputText value="#{estudanteCadastrarBean.getEstudante().getNome() eq estudanteCadastrarBean.getEstudante().getNome()}"/><br/>
+    <h:outputText value="#{estudanteCadastrarBean.getEstudante().getIdade()}"/><br/>
+    <h:outputText value="#{estudanteCadastrarBean.getEstudante().getTurno() eq Turno.NOTURNO}"/><br/>
+    <h:outputLabel value="#{estudanteCadastrarBean}" /><br/>
+    <h:outputLabel value="#{Turno.NOTURNO}" /><br/>
+    <h:outputLabel value="=============================================================================== Colecoes"/><br/>
+    <ui:repeat value="#{estudanteCadastrarBean.getDisciplinas()}" var="d">
+        <h:outputLabel value="#{d}" /><br/>
+    </ui:repeat>
+    <ui:repeat value="#{estudanteCadastrarBean.getLivros()}" var="d">
+        <h:outputLabel value="#{d}" /><br/>
+    </ui:repeat>
+    <h:outputLabel value="#{estudanteCadastrarBean.getDisciplinas().get(0)}" /><br />
+    <h:outputLabel value="#{estudanteCadastrarBean.getDisciplinas()[0];
+                            estudanteCadastrarBean.getDisciplinas()[1];
+                            estudanteCadastrarBean.getDisciplinas()[2]}" /><br />
+    <h:outputLabel value="#{estudanteCadastrarBean.primeiroElemento()}" />
+    <h:outputLabel value="=============================================================================== JSF Componentes"/><br/>
+    <h:form>
+        <h:commandButton value="click para a pagina de login" action="#{estudanteCadastrarBean.getLogin()}" />
+    </h:form>
+
+</h:body>
+
+
+
+
+
+
+
+
+
+
 
 </html>
